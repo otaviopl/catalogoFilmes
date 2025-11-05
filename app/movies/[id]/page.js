@@ -43,6 +43,7 @@ export default function MovieDetailsPage() {
 					<div><strong>Ano:</strong> {movie.year}</div>
 				</div>
 				<div style={{marginTop:16,display:'flex',gap:12}}>
+					<Link href={`/movies/${movie.id}/edit`}><Button>Editar</Button></Link>
 					<Link href="/"><Button variant="secondary">Cancelar</Button></Link>
 				</div>
 			</Card>

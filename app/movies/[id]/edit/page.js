@@ -45,7 +45,7 @@ export default function EditMoviePage() {
 		e.preventDefault();
 		try {
 			setSaving(true);
-			await updateMovie(id, { ...form, year: Number(form.year || 0) });
+			await updateMovie(id, { ...form });
 			router.push(`/movies/${id}`);
 		} catch (err) {
 			alert('Erro ao salvar alterações.');
@@ -64,7 +64,7 @@ export default function EditMoviePage() {
 				<form onSubmit={onSubmit} style={{display:'grid',gap:12}}>
 					<InputField label="Título" name="title" value={form.title} onChange={onChange} required />
 					<InputField label="Gênero" name="genre" value={form.genre} onChange={onChange} />
-					<InputField label="Ano" type="number" name="year" value={form.year} onChange={onChange} />
+					<InputField label="Ano" type="text" name="year" value={form.year} onChange={onChange} />
 					<div style={{display:'flex',gap:12}}>
 						<Button type="submit" disabled={saving}>{saving ? 'Salvando...' : 'Salvar'}</Button>
 						<Link href="/"><Button variant="secondary" type="button">Cancelar</Button></Link>
