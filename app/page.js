@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { getMovies } from '@/services/movies';
+import Card from '@/components/ui/Card';
+import Button from '@/components/ui/Button';
 
 export default function HomePage() {
 	const [movies, setMovies] = useState([]);
@@ -30,29 +32,31 @@ export default function HomePage() {
 		<section>
 			<h1 style={{margin:'8px 0 16px'}}>Início</h1>
 			<div style={{display:'flex',gap:12,alignItems:'center',marginBottom:12}}>
-				<Link href="/movies/new"><button style={{padding:'8px 12px'}}>Criar</button></Link>
+				<Link href="/movies/new"><Button>Criar</Button></Link>
 			</div>
 
 			{loading && <p>Carregando...</p>}
 			{error && <p style={{color:'crimson'}}>{error}</p>}
 
 			{!loading && !error && (
-				<table>
-					<thead>
-						<tr>
-							<th>ID</th>
-							<th>Nome</th>
-						</tr>
-					</thead>
-					<tbody>
-						{movies.map(movie => (
-							<tr key={movie.id}>
-								<td>{movie.id}</td>
-								<td><Link href={`/movies/${movie.id}`}>{movie.title}</Link></td>
+				<Card>
+					<table>
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Nome</th>
 							</tr>
-						))}
-					</tbody>
-				</table>
+						</thead>
+						<tbody>
+							{movies.map(movie => (
+								<tr key={movie.id}>
+									<td>{movie.id}</td>
+									<td><Link href={`/movies/${movie.id}`}>{movie.title}</Link></td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				</Card>
 			)}
 		</section>
 	);

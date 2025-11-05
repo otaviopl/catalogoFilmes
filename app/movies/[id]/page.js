@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { getMovie } from '@/services/movies';
+import Card from '@/components/ui/Card';
+import Button from '@/components/ui/Button';
 
 export default function MovieDetailsPage() {
 	const params = useParams();
@@ -34,14 +36,16 @@ export default function MovieDetailsPage() {
 	return (
 		<section>
 			<h1 style={{margin:'8px 0 16px'}}>Detalhes</h1>
-			<div style={{display:'grid',gap:8}}>
-				<div><strong>Título:</strong> {movie.title}</div>
-				<div><strong>Gênero:</strong> {movie.genre}</div>
-				<div><strong>Ano:</strong> {movie.year}</div>
-			</div>
-			<div style={{marginTop:16,display:'flex',gap:12}}>
-				<Link href="/"><button className="btn btn-secondary" style={{padding:'8px 12px'}}>Cancelar</button></Link>
-			</div>
+			<Card style={{maxWidth:560}}>
+				<div style={{display:'grid',gap:8}}>
+					<div><strong>Título:</strong> {movie.title}</div>
+					<div><strong>Gênero:</strong> {movie.genre}</div>
+					<div><strong>Ano:</strong> {movie.year}</div>
+				</div>
+				<div style={{marginTop:16,display:'flex',gap:12}}>
+					<Link href="/"><Button variant="secondary">Cancelar</Button></Link>
+				</div>
+			</Card>
 		</section>
 	);
 }

@@ -3,6 +3,10 @@
 import { useParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { getMovie, updateMovie } from '@/services/movies';
+import Link from 'next/link';
+import Card from '@/components/ui/Card';
+import InputField from '@/components/ui/InputField';
+import Button from '@/components/ui/Button';
 
 export default function EditMoviePage() {
 	const router = useRouter();
@@ -56,23 +60,17 @@ export default function EditMoviePage() {
 	return (
 		<section>
 			<h1 style={{margin:'8px 0 16px'}}>Editar filme</h1>
-			<form onSubmit={onSubmit} style={{display:'grid',gap:12,maxWidth:520}}>
-				<label>
-					<div>Título</div>
-					<input name="title" value={form.title} onChange={onChange} required style={{width:'100%',padding:8,border:'1px solid #d1d5db',borderRadius:6}} />
-				</label>
-				<label>
-					<div>Gênero</div>
-					<input name="genre" value={form.genre} onChange={onChange} style={{width:'100%',padding:8,border:'1px solid #d1d5db',borderRadius:6}} />
-				</label>
-				<label>
-					<div>Ano</div>
-					<input type="number" name="year" value={form.year} onChange={onChange} style={{width:'100%',padding:8,border:'1px solid #d1d5db',borderRadius:6}} />
-				</label>
-				<div style={{display:'flex',gap:12}}>
-					<button className="btn" type="submit" disabled={saving} style={{padding:'8px 12px'}}>{saving ? 'Salvando...' : 'Salvar'}</button>
-				</div>
-			</form>
+			<Card style={{maxWidth: 560}}>
+				<form onSubmit={onSubmit} style={{display:'grid',gap:12}}>
+					<InputField label="Título" name="title" value={form.title} onChange={onChange} required />
+					<InputField label="Gênero" name="genre" value={form.genre} onChange={onChange} />
+					<InputField label="Ano" type="number" name="year" value={form.year} onChange={onChange} />
+					<div style={{display:'flex',gap:12}}>
+						<Button type="submit" disabled={saving}>{saving ? 'Salvando...' : 'Salvar'}</Button>
+						<Link href="/"><Button variant="secondary" type="button">Cancelar</Button></Link>
+					</div>
+				</form>
+			</Card>
 		</section>
 	);
 }
