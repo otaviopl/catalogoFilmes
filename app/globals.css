@@ -7,8 +7,37 @@ html, body {
 	font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
 }
 a { color: #111827; text-decoration: none; }
+a:hover { text-decoration: underline; }
+body { background: #f9fafb; color: #111827; }
 table { width: 100%; border-collapse: collapse; }
 th, td { padding: 8px 12px; border-bottom: 1px solid #e5e7eb; text-align: left; }
+tbody tr:hover { background: #f3f4f6; }
 button { cursor: pointer; }
+
+/* Form elements */
+input, select, textarea {
+	font: inherit;
+	background: #fff;
+	border: 1px solid #d1d5db;
+	border-radius: 6px;
+	padding: 8px;
+}
+
+/* Buttons */
+.btn {
+	background: #111827;
+	color: #fff;
+	border: 1px solid #111827;
+	border-radius: 6px;
+	padding: 8px 12px;
+}
+.btn:hover { background: #0b1220; }
+.btn:disabled { opacity: .7; cursor: not-allowed; }
+.btn-secondary {
+	background: #e5e7eb;
+	color: #111827;
+	border-color: #e5e7eb;
+}
+.btn-secondary:hover { background: #d1d5db; }
 
 

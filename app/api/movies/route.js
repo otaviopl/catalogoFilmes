@@ -13,8 +13,7 @@ function toInternal(movie) {
 		id: movie.id,
 		title: movie.nome,
 		genre: movie.genero,
-		year: movie.ano,
-		director: movie.director
+		year: movie.ano
 	};
 }
 
@@ -22,8 +21,7 @@ function toExternal(body) {
 	return {
 		nome: body.title ?? body.nome,
 		genero: body.genre ?? body.genero,
-		ano: body.year ?? body.ano,
-		director: body.director
+		ano: body.year ?? body.ano
 	};
 }
 

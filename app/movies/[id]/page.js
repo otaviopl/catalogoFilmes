@@ -38,10 +38,9 @@ export default function MovieDetailsPage() {
 				<div><strong>Título:</strong> {movie.title}</div>
 				<div><strong>Gênero:</strong> {movie.genre}</div>
 				<div><strong>Ano:</strong> {movie.year}</div>
-				<div><strong>Diretor:</strong> {movie.director}</div>
 			</div>
 			<div style={{marginTop:16,display:'flex',gap:12}}>
-				<Link href="/"><button style={{padding:'8px 12px'}}>Cancelar</button></Link>
+				<Link href="/"><button className="btn btn-secondary" style={{padding:'8px 12px'}}>Cancelar</button></Link>
 			</div>
 		</section>
 	);

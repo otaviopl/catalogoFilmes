@@ -8,7 +8,7 @@ export default function EditMoviePage() {
 	const router = useRouter();
 	const params = useParams();
 	const id = params?.id;
-	const [form, setForm] = useState({ title: '', genre: '', year: '', director: '' });
+	const [form, setForm] = useState({ title: '', genre: '', year: '' });
 	const [loading, setLoading] = useState(true);
 	const [saving, setSaving] = useState(false);
 	const [error, setError] = useState('');
@@ -22,8 +22,7 @@ export default function EditMoviePage() {
 				setForm({
 					title: data.title || '',
 					genre: data.genre || '',
-					year: String(data.year ?? ''),
-					director: data.director || ''
+					year: String(data.year ?? '')
 				});
 			} catch (e) {
 				setError('Falha ao carregar filme.');
@@ -70,12 +69,8 @@ export default function EditMoviePage() {
 					<div>Ano</div>
 					<input type="number" name="year" value={form.year} onChange={onChange} style={{width:'100%',padding:8,border:'1px solid #d1d5db',borderRadius:6}} />
 				</label>
-				<label>
-					<div>Diretor</div>
-					<input name="director" value={form.director} onChange={onChange} style={{width:'100%',padding:8,border:'1px solid #d1d5db',borderRadius:6}} />
-				</label>
 				<div style={{display:'flex',gap:12}}>
-					<button type="submit" disabled={saving} style={{padding:'8px 12px'}}>{saving ? 'Salvando...' : 'Salvar'}</button>
+					<button className="btn" type="submit" disabled={saving} style={{padding:'8px 12px'}}>{saving ? 'Salvando...' : 'Salvar'}</button>
 				</div>
 			</form>
 		</section>
