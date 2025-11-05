@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { getMovies } from '@/services/movies';
+import { getMovies, deleteMovie } from '@/services/movies';
 import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
 
@@ -26,7 +26,15 @@ export default function HomePage() {
 		})();
 	}, []);
 
-
+	async function handleDelete(id) {
+		if (!confirm('Excluir este filme?')) return;
+		try {
+			await deleteMovie(id);
+			setMovies(prev => prev.filter(m => m.id !== id));
+		} catch (e) {
+			alert('Erro ao excluir.');
+		}
+	}
 
 	return (
 		<section>
@@ -42,18 +50,29 @@ export default function HomePage() {
 				<Card>
 					<table>
 						<thead>
-							<tr>
-								<th>ID</th>
-								<th>Nome</th>
-							</tr>
+						<tr>
+							<th>ID</th>
+							<th>Nome</th>
+							<th style={{width:80}}></th>
+						</tr>
 						</thead>
 						<tbody>
-							{movies.map(movie => (
-								<tr key={movie.id}>
-									<td>{movie.id}</td>
-									<td><Link href={`/movies/${movie.id}`}>{movie.title}</Link></td>
-								</tr>
-							))}
+						{movies.map(movie => (
+							<tr key={movie.id}>
+								<td>{movie.id}</td>
+								<td><Link href={`/movies/${movie.id}`}>{movie.title}</Link></td>
+								<td>
+									<button
+										onClick={() => handleDelete(movie.id)}
+										className="btn btn-danger"
+										title="Excluir"
+										style={{padding:'6px 10px'}}
+									>
+										🗑️
+									</button>
+								</td>
+							</tr>
+						))}
 						</tbody>
 					</table>
 				</Card>
