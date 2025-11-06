@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
 						<nav style={{display:'flex',gap:16}}>
 							<Link href="/">Início</Link>
 							<Link href="/movies/new">Criar</Link>
-						<Link href="/">Alterar</Link>
+						<Link href="/movies/edit">Alterar</Link>
 						</nav>
 					</div>
 				</header>
